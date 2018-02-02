@@ -1,6 +1,6 @@
 <h1>cPanel CloudLinux Installer</h1>
 <p>Este script instala y configura CloudLinux con los par&aacute;metros recomendados por WNPower</p>
-<p>Modo de uso: Este script requiere que se ejecute dos veces:</p>
+<p>Este script requiere que se ejecute dos veces:</p>
 <ol>
 <li>La primera instala los paquetes b&aacute;sicos de CloudLinux y el kernel customizado de CloudLinux (al finalizar reinicia el servidor para aplicar los cambios)</li>
 <li>Una vez reiniciado hay que ejecutarlo una segunda vez para que configure todos los servicios de CloudLinux</li>
