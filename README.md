@@ -1,4 +1,4 @@
-<h1>cPanel CloudLinux Installer-</h1>
+<h1>cPanel CloudLinux Installer</h1>
 <p>Este script instala y configura CloudLinux con los par&aacute;metros recomendados por WNPower</p>
 <p>Este script requiere que se ejecute dos veces:</p>
 <ol>
