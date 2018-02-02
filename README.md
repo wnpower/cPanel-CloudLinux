@@ -5,7 +5,7 @@
 <li>La primera instala los paquetes b&aacute;sicos de CloudLinux y el kernel customizado de CloudLinux (al finalizar reinicia el servidor para aplicar los cambios)</li>
 <li>Una vez reiniciado hay que ejecutarlo una segunda vez para que configure todos los servicios de CloudLinux</li>
 </ol>
-<p>wget&nbsp;https://raw.githubusercontent.com/imorandinwnp/cPanel-CloudLinux/master/install_cloudlinux.sh&nbsp;&amp;&amp; bash install_cloudlinux.sh</p>
+<p>wget&nbsp;https://raw.githubusercontent.com/wnpower/cPanel-CloudLinux/master/install_cloudlinux.sh&nbsp;&amp;&amp; bash install_cloudlinux.sh</p>
 <p><em>NOTA: Ten&eacute; la licencia activa antes de iniciar el instalador:&nbsp;https://cln.cloudlinux.com/</em></p>
 <h3>Tareas que realiza</h3>
 <ul>
