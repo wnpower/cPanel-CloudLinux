@@ -190,6 +190,15 @@ whmapi1 update_featurelist featurelist=disabled lvephpsel=0 lvepythonsel=0 lveru
 echo "Configurando limites DEFAULT..."
 lvectl set default --speed=100% --io=1024 --nproc=60 --pmem=1024M --iops=1024 --maxEntryProcs=20
 
+echo "Deshabilitando control de memoria de Apache..."
+touch $CWD/wpwhmcookie.txt
+SESS_CREATE=$(whmapi1 create_user_session user=root service=whostmgrd)
+SESS_TOKEN=$(echo "$SESS_CREATE" | grep "cp_security_token:" | cut -d':' -f2- | sed 's/ //')
+SESS_QS=$(echo "$SESS_CREATE" | grep "session:" | cut -d':' -f2- | sed 's/ //' | sed 's/ /%20/g;s/!/%21/g;s/"/%22/g;s/#/%23/g;s/\$/%24/g;s/\&/%26/g;s/'\''/%27/g;s/(/%28/g;s/)/%29/g;s/:/%3A/g')
+
+curl -sk "https://127.0.0.1:2087/$SESS_TOKEN/login/?session=$SESS_QS" --cookie-jar $CWD/wpwhmcookie.txt > /dev/null
+curl -sk "https://127.0.0.1:2087/$SESS_TOKEN/scripts2/save_apache_mem_limits" --cookie $CWD/wpwhmcookie.txt --data 'newRLimitMem=disabled&restart_apache=on&btnSave=1' > /dev/null
+
 echo ""
 echo "###### Terminado! ######"
 
