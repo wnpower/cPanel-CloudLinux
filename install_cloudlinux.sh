@@ -112,8 +112,8 @@ yum install ea-apache24-mod_lsapi liblsapi liblsapi-devel ea-apache24-mod_suexec
 echo "Configurando php.inis..."
 find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^;memory_limit.*/memory_limit = 1024M/g'
 find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^memory_limit.*/memory_limit = 1024M/g'
-find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^enable_dl.*/enable_dl = off/g'
-find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^expose_php.*/expose_php = off/g'
+find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^enable_dl.*/enable_dl = Off/g'
+find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^expose_php.*/expose_php = Off/g'
 find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^disable_functions.*/disable_functions = apache_get_modules,apache_get_version,apache_getenv,apache_note,apache_setenv,disk_free_space,diskfreespace,dl,highlight_file,ini_alter,ini_restore,openlog,phpinfo,show_source,symlink,system,eval,debug_zval_dump/g'
 find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^upload_max_filesize.*/upload_max_filesize = 16M/g'
 find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^post_max_size.*/post_max_size = 16M/g'
@@ -126,8 +126,8 @@ find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^m
 find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^max_input_vars.*/max_input_vars = 2000/g'
 find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^;default_charset = "UTF-8"/default_charset = "UTF-8"/g'
 find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^default_charset = "UTF-8"/default_charset = "UTF-8"/g'
-find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^error_reporting.*/error_reporting = "E_ALL \& \~E_DEPRECATED \& \~E_STRICT"/g'
-find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^display_errors.*/display_errors = "On"/g'
+find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^error_reporting.*/error_reporting = E_ALL \& \~E_DEPRECATED \& \~E_STRICT/g'
+find /opt/ /etc/ \( -name "php.ini" -o -name "local.ini" \) | xargs sed -i 's/^display_errors.*/display_errors = On/g'
 
 echo "Configurando mod_lsapi..." 
 sed -i 's/.*lsapi_enable_user_ini.*/lsapi_enable_user_ini\ On/' /etc/apache2/conf.d/lsapi.conf
