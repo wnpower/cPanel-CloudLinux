@@ -200,6 +200,19 @@ SESS_QS=$(echo "$SESS_CREATE" | grep "session:" | cut -d':' -f2- | sed 's/ //' |
 curl -sk "https://127.0.0.1:2087/$SESS_TOKEN/login/?session=$SESS_QS" --cookie-jar $CWD/wpwhmcookie.txt > /dev/null
 curl -sk "https://127.0.0.1:2087/$SESS_TOKEN/scripts2/save_apache_mem_limits" --cookie $CWD/wpwhmcookie.txt --data 'newRLimitMem=disabled&restart_apache=on&btnSave=1' > /dev/null
 
+echo "Configurando opciones LVE Manager..."
+sed -i '/^lve_enablepythonapp/d' /var/cpanel/cpanel.config
+sed -i '/^lve_enablerubyapp/d' /var/cpanel/cpanel.config
+sed -i '/^lve_hideextensions/d' /var/cpanel/cpanel.config
+sed -i '/^lve_hideuserstat/d' /var/cpanel/cpanel.config
+sed -i '/^lve_showinodeusage/d' /var/cpanel/cpanel.config
+
+echo "lve_enablepythonapp=0" >> /var/cpanel/cpanel.config
+echo "lve_enablerubyapp=0" >> /var/cpanel/cpanel.config
+echo "lve_hideextensions=1" >> /var/cpanel/cpanel.config
+echo "lve_hideuserstat=0" >> /var/cpanel/cpanel.config
+echo "lve_showinodeusage=1" >> /var/cpanel/cpanel.config
+
 echo ""
 echo "###### Terminado! ######"
 
