@@ -163,7 +163,10 @@ sed -i '/^fs\.suid_dumpable.*/d' /etc/sysctl.conf
 echo "fs.suid_dumpable=1 # CloudLinux MySQL Governor" >> /etc/sysctl.conf
 sysctl -p
 
-/usr/share/lve/dbgovernor/mysqlgovernor.py --mysql-version 'mariadb101'
+#MYSQLVER=$(grep "mysql-version" /var/cpanel/cpanel.config | cut -d'=' -f2 | sed 's/\.//')
+#MYSQLVENDOR=$(echo $MYSQLVER | grep "^5.*" > /dev/null && echo mysql || echo mariadb)
+
+#/usr/share/lve/dbgovernor/mysqlgovernor.py --mysql-version "$MYSQLVENDOR$MYSQLVER"
 /usr/share/lve/dbgovernor/mysqlgovernor.py --install
 sed -i 's/<lve\ use=.*/<lve\ use=\"all\"\/>/' /etc/container/mysql-governor.xml
 service db_governor restart
