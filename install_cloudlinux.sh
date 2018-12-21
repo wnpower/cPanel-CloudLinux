@@ -171,6 +171,13 @@ MYSQLVENDOR=$(echo $MYSQLVER | grep "^5.*" > /dev/null && echo mysql || echo mar
 sed -i 's/<lve\ use=.*/<lve\ use=\"all\"\/>/' /etc/container/mysql-governor.xml
 service db_governor restart
 
+mv /usr/lib/systemd/system/mysqld.service /usr/lib/systemd/system/mysqld.service.bak # BUG https://forums.cpanel.net/threads/multiple-mysql-processes.572331/
+mv /usr/lib/systemd/system/mariadb.service /usr/lib/systemd/system/mariadb.service.bak # BUG https://forums.cpanel.net/threads/multiple-mysql-processes.572331/
+
+systemctl daemon-reload
+
+/scripts/restartsrv_mysql
+
 echo ""
 echo "MySQL Governor configurado!"
 sleep 2
