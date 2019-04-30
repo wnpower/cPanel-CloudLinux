@@ -68,6 +68,8 @@ else
 fi
 
 echo "Instalando CageFS..."
+echo "Desactivando Shell Fork Bomb Protection..."
+/usr/local/cpanel/bin/install-login-profile --uninstall limits
 yum clean all -y
 yum install cagefs -y
 cagefsctl --init
