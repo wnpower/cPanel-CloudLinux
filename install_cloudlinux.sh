@@ -106,6 +106,7 @@ sleep 2
 
 echo ""
 echo "Configurando Apache/PHP con mod_lsapi..."
+whmapi1 php_set_default_accounts_to_fpm default_accounts_to_fpm=0 # DESACTIVAR FPM SI LO TENIA DE ANTES
 yum erase ea-apache24-mod_ruid2 -y
 yum install ea-apache24-mod_lsapi liblsapi liblsapi-devel ea-apache24-mod_suexec -y
 /usr/bin/switch_mod_lsapi --setup
