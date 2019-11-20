@@ -92,6 +92,10 @@ if [ -d /etc/sssd/ ]; then
 	service sssd stop
 fi
 
+echo "Activando rsync..."
+cagefsctl --addrpm rsync
+cagefsctl --update
+
 cagefsctl --update
 cagefsctl --force-update
 
