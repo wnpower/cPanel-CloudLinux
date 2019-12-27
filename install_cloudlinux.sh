@@ -230,6 +230,10 @@ echo "lve_hideextensions=1" >> /var/cpanel/cpanel.config
 echo "lve_hideuserstat=0" >> /var/cpanel/cpanel.config
 echo "lve_showinodeusage=1" >> /var/cpanel/cpanel.config
 
+echo "Desactivando vestigios de alt-php..."
+sed -i 's/yes/no/g' /opt/alt/alt-php-config/alt-php.cfg
+/opt/alt/alt-php-config/multiphp_reconfigure.py
+
 echo ""
 echo "###### Terminado! ######"
 
