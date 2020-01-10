@@ -206,7 +206,7 @@ fi
 whmapi1 update_featurelist featurelist=disabled lvephpsel=0 lvepythonsel=0 lverubysel=0
 
 echo "Configurando limites DEFAULT..."
-lvectl set default --speed=100% --io=1024 --nproc=60 --pmem=1024M --iops=1024 --maxEntryProcs=20
+lvectl set default --speed=100% --io=2048 --nproc=45 --vmem=0 --pmem=1024M --iops=768 --maxEntryProcs=30
 
 echo "Deshabilitando control de memoria de Apache..."
 touch $CWD/wpwhmcookie.txt
