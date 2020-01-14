@@ -67,6 +67,9 @@ else
 	exit 0
 fi
 
+echo "Instalando LVE Manager..."
+yum install lvemanager -y
+
 echo "Instalando CageFS..."
 echo "Desactivando Shell Fork Bomb Protection..."
 /usr/local/cpanel/bin/install-login-profile --uninstall limits
