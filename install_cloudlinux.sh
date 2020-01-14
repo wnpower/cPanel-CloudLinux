@@ -237,6 +237,9 @@ echo "Desactivando vestigios de alt-php..."
 sed -i 's/yes/no/g' /opt/alt/alt-php-config/alt-php.cfg
 /opt/alt/alt-php-config/multiphp_reconfigure.py
 
+echo "Desactivando JailShell por default (para que use Bash)..."
+whmapi1 set_tweaksetting key=jaildefaultshell value=0
+
 echo ""
 echo "###### Terminado! ######"
 
