@@ -102,6 +102,15 @@ cagefsctl --update
 cagefsctl --update
 cagefsctl --force-update
 
+rm -f /etc/cagefs/exclude/excluded_users
+awk -F':' '/wheel/{print $4}' /etc/group | while read ADMIN_USER
+do
+        echo "Deshabilitando CageFS para $ADMIN_USER..."
+        cagefsctl --disable $ADMIN_USER
+        echo "$ADMIN_USER" >> /etc/cagefs/exclude/excluded_users
+done
+chmod 600 /etc/cagefs/exclude/excluded_users
+
 if [ -d /etc/sssd/ ]; then
 	echo "Reactivando SSSD..."
 	service sssd start
