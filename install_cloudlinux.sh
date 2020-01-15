@@ -154,11 +154,18 @@ echo "Configurando SecureLink..."
 sed -i '/^fs\.enforce_symlinksifowner.*/d' /etc/sysctl.conf
 sed -i '/^fs\.protected_symlinks_create.*/d' /etc/sysctl.conf
 sed -i '/^fs\.protected_hardlinks_create.*/d' /etc/sysctl.conf
+sed -i '/^fs\.protected_hardlinks_allow_gid.*/d' /etc/sysctl.conf
+sed -i '/^fs\.protected_symlinks_allow_gid.*/d' /etc/sysctl.conf
 
 echo "# CloudLinux SecureLink" >> /etc/sysctl.conf
 echo "fs.enforce_symlinksifowner=1" >> /etc/sysctl.conf
 echo "fs.protected_symlinks_create=1" >> /etc/sysctl.conf
 echo "fs.protected_hardlinks_create=1" >> /etc/sysctl.conf
+
+LINKSAFE_GID=$(getent group linksafe | cut -d':' -f3)
+
+echo "fs.protected_hardlinks_allow_gid = $LINKSAFE_GID" >> /etc/sysctl.conf
+echo "fs.protected_symlinks_allow_gid = $LINKSAFE_GID" >> /etc/sysctl.conf
 
 sysctl -p
 
