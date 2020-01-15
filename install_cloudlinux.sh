@@ -256,6 +256,9 @@ sed -i 's/yes/no/g' /opt/alt/alt-php-config/alt-php.cfg
 echo "Desactivando JailShell por default (para que use Bash)..."
 whmapi1 set_tweaksetting key=jaildefaultshell value=0
 
+echo "Desactivando PHP Selector..."
+cloudlinux-selector set --interpreter php --selector-status=disabled --json
+
 echo ""
 echo "###### Terminado! ######"
 
