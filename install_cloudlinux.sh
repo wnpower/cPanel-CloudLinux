@@ -99,6 +99,11 @@ echo "Activando rsync..."
 cagefsctl --addrpm rsync
 cagefsctl --update
 
+echo "Activando permisos para wget y curl..."
+# NO TIENE PERMISOS DE EJECUCION PARA TODOS POR DEFAULT, SE LE DA PERMISOS
+chmod 755 /usr/bin/wget
+chmod 755 /usr/bin/curl 
+
 cagefsctl --update
 cagefsctl --force-update
 
