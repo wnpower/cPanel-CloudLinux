@@ -209,6 +209,8 @@ systemctl daemon-reload
 
 /scripts/restartsrv_mysql
 
+mysql_upgrade
+
 echo ""
 echo "MySQL Governor configurado!"
 sleep 2
