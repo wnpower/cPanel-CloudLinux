@@ -211,6 +211,8 @@ systemctl daemon-reload
 
 mysql_upgrade
 
+whmapi1 configureservice service=db_governor enabled=1 monitored=1
+
 echo ""
 echo "MySQL Governor configurado!"
 sleep 2
