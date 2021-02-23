@@ -271,10 +271,6 @@ cloudlinux-selector set --interpreter php --selector-status=disabled --json
 echo "Configurando PAM..."
 sed -i "s/.*pam_lve.so.*/session\trequired\tpam_lve.so\t500\t1\twheel/" /etc/pam.d/sshd
 
-echo "Activando Website Monitoring y Site Analyzer..."
-/usr/sbin/cloudlinux-ssa-manager enable-ssa # Site Analyzer
-/usr/share/web-monitoring-tool/wmtbin/wmt-api -start # Website Monitoring
-
 echo ""
 echo "###### Terminado! ######"
 
