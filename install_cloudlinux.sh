@@ -32,6 +32,7 @@ echo "Detectando CloudLinux..."
 CL=$(grep "CloudLinux" /etc/redhat-release > /dev/null && echo SI || echo NO)
 
 if [ "$CL" = "NO" ]; then
+	rm -f /var/cpanel/nocloudlinux # BORRO FLAG QUE DEJA EL INSTALADOR DE CPANEL
 	echo "CloudLinux no detectado, bajando instalador..."
 	wget http://repo.cloudlinux.com/cloudlinux/sources/cln/cldeploy -O $CWD/cldeploy
 	CL_INSTALL="$CWD/cldeploy"
