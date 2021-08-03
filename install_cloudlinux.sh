@@ -200,7 +200,9 @@ MYSQLVENDOR=$(echo $MYSQLVER | grep "^5.*" > /dev/null && echo mysql || echo mar
 
 /usr/share/lve/dbgovernor/mysqlgovernor.py --mysql-version "$MYSQLVENDOR$MYSQLVER"
 /usr/share/lve/dbgovernor/mysqlgovernor.py --install
-sed -i 's/<lve\ use=.*/<lve\ use=\"all\"\/>/' /etc/container/mysql-governor.xml
+
+dbctl --lve-mode abusers # Seteo modo Abusers
+
 service db_governor restart
 
 mv /usr/lib/systemd/system/mysqld.service /usr/lib/systemd/system/mysqld.service.bak # BUG https://forums.cpanel.net/threads/multiple-mysql-processes.572331/
