@@ -109,7 +109,7 @@ cagefsctl --update
 cagefsctl --force-update
 
 rm -f /etc/cagefs/exclude/excluded_users
-awk -F':' '/wheel/{print $4}' /etc/group | while read ADMIN_USER
+awk -F':' '/wheel/{print $4}' /etc/group | tr , '\n' | while read ADMIN_USER
 do
         echo "Deshabilitando CageFS para $ADMIN_USER..."
         cagefsctl --disable $ADMIN_USER
