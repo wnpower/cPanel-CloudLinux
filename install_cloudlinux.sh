@@ -274,6 +274,9 @@ cloudlinux-selector set --interpreter php --selector-status=disabled --json
 echo "Configurando PAM..."
 sed -i "s/.*pam_lve.so.*/session\trequired\tpam_lve.so\t500\t1\twheel/" /etc/pam.d/sshd
 
+echo "Gradual rollout opt-out..."
+dnf config-manager --disable cloudlinux*rollout*
+
 echo ""
 echo "###### Terminado! ######"
 
