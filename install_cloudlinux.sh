@@ -205,9 +205,6 @@ dbctl --lve-mode abusers # Seteo modo Abusers
 
 service db_governor restart
 
-mv /usr/lib/systemd/system/mysqld.service /usr/lib/systemd/system/mysqld.service.bak # BUG https://forums.cpanel.net/threads/multiple-mysql-processes.572331/
-mv /usr/lib/systemd/system/mariadb.service /usr/lib/systemd/system/mariadb.service.bak # BUG https://forums.cpanel.net/threads/multiple-mysql-processes.572331/
-
 systemctl daemon-reload
 
 /scripts/restartsrv_mysql
@@ -215,6 +212,8 @@ systemctl daemon-reload
 mysql_upgrade
 
 whmapi1 configureservice service=db_governor enabled=1 monitored=1
+echo 'service[db_governor]=x,x,x,/usr/bin/systemctl restart db_governor.service,db_governor,root' > /etc/chkserv.d/db_governor # Corrijo el archivo de config de chksrvd porque está mal y no reinicia
+/scripts/restartsrv_chkservd
 
 echo ""
 echo "MySQL Governor configurado!"
