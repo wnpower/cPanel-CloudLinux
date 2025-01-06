@@ -276,6 +276,17 @@ sed -i "s/.*pam_lve.so.*/session\trequired\tpam_lve.so\t500\t1\twheel/" /etc/pam
 echo "Gradual rollout opt-out..."
 dnf config-manager --disable cloudlinux*rollout*
 
+echo "Activando features licencia Shared Pro..."
+
+# Migrar licencia (si no la detectó automáticamente)
+/usr/sbin/clnreg_ks --force --migrate-silently
+
+# Activar "advanced performance analytics" (necesario para X-Ray) https://docs.cloudlinux.com/cloudlinuxos/shared-pro/#how-to-enable-disable-via-cli
+cloudlinux-xray-manager advanced-metrics --enable
+
+# Desactivar "Hide X-Ray App in web-interface" (para que aparezca botón de xray en cpanel)
+cloudlinux-config set --json --data '{"options":{"uiSettings":{"hideXrayApp":false}}}'
+
 echo ""
 echo "###### Terminado! ######"
 
