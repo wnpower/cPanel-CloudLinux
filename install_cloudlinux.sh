@@ -281,6 +281,13 @@ echo "Activando features licencia Shared Pro..."
 # Migrar licencia (si no la detectó automáticamente)
 /usr/sbin/clnreg_ks --force --migrate-silently
 
+# Instalar paquetes si no lo están
+/usr/sbin/cloudlinux-xray -i
+sleep 30
+
+/usr/sbin/cloudlinux-awp-installer -i
+sleep 30
+
 # Activar "advanced performance analytics" (necesario para X-Ray) https://docs.cloudlinux.com/cloudlinuxos/shared-pro/#how-to-enable-disable-via-cli
 cloudlinux-xray-manager advanced-metrics --enable
 
